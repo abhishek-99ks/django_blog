@@ -46,10 +46,12 @@
                       <a href="#">{{ cat }}</a>
                     {% endfor %}
                   </div>
-                  <div class="modify-buttons">
-                    <a class="btn btn-secondary" href="{% url 'post-update' id=post.id %}">Update</a>
-                    <a class="btn btn-secondary" href="{% url 'post-delete' id=post.id %}">Delete</a>
-                  </div>
+                  {% if post.author.user.username == user.username %}
+                    <div class="modify-buttons">
+                      <a class="btn btn-secondary" href="{% url 'post-update' id=post.id %}">Update</a>
+                      <a class="btn btn-secondary" href="{% url 'post-delete' id=post.id %}">Delete</a>
+                    </div>
+                  {% endif %}
                 </div>
                 <div>
                   
