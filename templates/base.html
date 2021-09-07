@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    
+{% include "head.html" %}
+
+
+<body>
+
+    <style>
+        .msg {
+            list-style-type: none;
+        }
+    </style>
+
+    {% include 'header.html' %}
+
+    {% if messages %}
+        <div class="container my-2">
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if forloop.last %}
+                        <li {% if message.tags %} class="{{ message.tags }} msg"{% endif %}>{{ message }} <strong> Please Refresh </strong></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'footer.html' %}
+    {% include "scripts.html" %}
+</body>
+
+</html>

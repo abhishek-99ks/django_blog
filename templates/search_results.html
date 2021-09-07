@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .mainContainer{
+        min-height: 20.5em;
+        display: grid;
+        align-content: center;
+    }
+</style>
+
+<div class="container col-5 offset-3.5 my-5 mainContainer">
+    <h2 class="mb-5">This is the result of your search</h2>
+    {% for post in queryset %}
+        <div>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            <hr>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}
